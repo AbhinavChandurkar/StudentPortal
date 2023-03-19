@@ -3,16 +3,9 @@
  * 
  */
 
-const jwt = require("jsonwebtoken");
+
 const config = require("../config/auth.config");
-/**
- *  We are sacing the usersName when a user login in a cookie
- * ? we have to take that userName and check if the website accessing by the user is a vaild website 
- * * Do we need token?
- * 
- * 
- * 
- */
+
 
 
 
@@ -20,7 +13,6 @@ verifyToken = async (req, res, next) => {
     //taking the stored data from cookie 
     //const token = req.cookies.token;
     const userName = req.cookies.userName;
-    console.log("Current User : "+userName);
 
     try{
         if(!userName){

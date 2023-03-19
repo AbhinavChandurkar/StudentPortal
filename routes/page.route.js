@@ -49,4 +49,8 @@ module.exports = (app)=>{
     app.get('/logout',[authJwt.verifyToken], (req, res) => {
       res.sendFile(path.join(__dirname, '../Public', 'home.html'));
     });
+
+    app.get('/admin/dashboard', (req, res) => {
+      res.sendFile(path.join(__dirname, '../view', 'index.ejs'));
+    });
 }

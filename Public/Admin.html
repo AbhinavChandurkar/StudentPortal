@@ -1,85 +1,44 @@
 <!DOCTYPE html>
+<html>
+<head>
+  <title>Responsive Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="admin1.css"/>
+ 
+</head>
 
-<html lang="en" dir="ltr">
-   <head>
-      <meta charset="utf-8">
-      <title>Login and Registration Form in HTML | CodingNepal</title>
-      <link rel="stylesheet" type="text/css" href="css/admin.css">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-   <body>
-      <div class="wrapper">
-         <div class="title-text">
-            <div class="title login">
-               Admin Login
-            </div>
-            <div class="title signup">
-               Admin Signup 
-            </div>
-         </div>
-         <div class="form-container">
-            <div class="slide-controls">
-               <input type="radio" name="slide" id="login" checked>
-               <input type="radio" name="slide" id="signup">
-               <label for="login" class="slide login">Login</label>
-               <label for="signup" class="slide signup">Signup</label>
-               <div class="slider-tab"></div>
-            </div>
-            <div class="form-inner">
-               <form action="#" class="login">
-                  <div class="field">
-                     <input type="text" placeholder="Email Address" required>
-                  </div>
-                  <div class="field">
-                     <input type="password" placeholder="Password" required>
-                  </div>
-                  <div class="pass-link">
-                     <a href="#">Forgot password?</a>
-                  </div>
-                  <div class="field btn">
-                     <div class="btn-layer"></div>
-                     <input type="submit" value="Login">
-                  </div>
-                  <div class="signup-link">
-                     Not a member? <a href="">Signup now</a>
-                  </div>
-               </form>
-               <form action="#" class="signup">
-                  <div class="field">
-                     <input type="text" placeholder="Email Address" required>
-                  </div>
-                  <div class="field">
-                     <input type="password" placeholder="Password" required>
-                  </div>
-                  <div class="field">
-                     <input type="password" placeholder="Confirm password" required>
-                  </div>
-                  <div class="field btn">
-                     <div class="btn-layer"></div>
-                     <input type="submit" value="Signup">
-                  </div>
-               </form>
-            </div>
-         </div>
-      </div>
-      <script>
-         const loginText = document.querySelector(".title-text .login");
-         const loginForm = document.querySelector("form.login");
-         const loginBtn = document.querySelector("label.login");
-         const signupBtn = document.querySelector("label.signup");
-         const signupLink = document.querySelector("form .signup-link a");
-         signupBtn.onclick = (()=>{
-           loginForm.style.marginLeft = "-50%";
-           loginText.style.marginLeft = "-50%";
-         });
-         loginBtn.onclick = (()=>{
-           loginForm.style.marginLeft = "0%";
-           loginText.style.marginLeft = "0%";
-         });
-         signupLink.onclick = (()=>{
-           signupBtn.click();
-           return false;
-         });
-      </script>
-   </body>
+   <table class="table">
+     <thead>
+     	<tr>
+            <th>S No.</th>
+            <th>Full Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Action</th>
+     	</tr>
+     </thead>
+     <tbody>
+     	  <tr>
+     	  	  <td data-label="S.No">1</td>
+     	  	  <td data-label="Name">Rakhi Gupta</td>
+     	  	  <td data-label="Age">rakhi</td>
+     	  	  <td data-label="Marks%">rakhi@gmail.com</td>
+     	  	  <td><button1>Details</button1>
+                <button2>Edit</button2>
+                <button3>Delete</button3></td>
+     	  </tr>
+
+     	  <tr>
+     	  	  <td data-label="S.No">2</td>
+     	  	  <td data-label="Name">Anjali sharma</td>
+     	  	  <td data-label="Age">anjali</td>
+     	  	  <td data-label="Marks%">anjali@gmail.com</td>
+     	  	  <td><button1>Details</button1>
+                <button2>Edit</button2>
+                <button3>Delete</button3></td>
+     	  </tr>
+         </tbody>
+   </table>
+
+</body>
 </html>

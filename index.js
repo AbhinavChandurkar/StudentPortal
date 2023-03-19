@@ -4,9 +4,9 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const dbConfig = require("./config/db.config");
 const User = require('./models/user.model')
-const path= require('path');
-const multer = require("multer");
 const cookieParser = require("cookie-parser");
+
+
 
 //Port on which server is running
 const port =  3000;
@@ -14,14 +14,16 @@ const port =  3000;
 //Initalizing the server
 const app = express();
 
+//used to intialize cookies
 app.use(cookieParser());
 
-//body parser
+
+//used to pass data to backend
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
 require("./routes")(app);
-app.use(express.static('public'));
 
 /**
  * Setup the mongodb connection 
