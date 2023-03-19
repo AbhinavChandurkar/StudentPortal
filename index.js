@@ -7,7 +7,6 @@ const User = require('./models/user.model')
 const cookieParser = require("cookie-parser");
 
 
-
 //Port on which server is running
 const port =  3000;
 
@@ -17,12 +16,11 @@ const app = express();
 //used to intialize cookies
 app.use(cookieParser());
 
-
 //used to pass data to backend
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
+app.use(express.static('public'));
 require("./routes")(app);
 
 /**
