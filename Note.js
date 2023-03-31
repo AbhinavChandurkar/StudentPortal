@@ -1,7 +1,7 @@
 /**
- *      ! remove token system 
- *      ! remove .html from the herf tag from each dashobard paage
- * // 1.Uplod Image = { mangoose multier }
- * 2. pop up msg 
- * 3. add check for all the registratikn feild 
+ *  * Database = event,help,webinar,Internship
+ *    
+ *   1. admin   can create all the above things 
+ *   2. help send the data to admin
+ *   
  */

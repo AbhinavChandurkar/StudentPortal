@@ -10,31 +10,37 @@
 <body>
     <div class="container">
         <div class="title">Registration</div>
-        <form action="/submit" method="post">
+        <form action="/submit"  name="registrationForm" onsubmit="return validateForm()"  method="post">
             <div class="user-details">
-                <div class="input-box">
+                <div class="input-box" id="name">
                     <span class="details">Full Name</span>
                     <input type="text" name="name" placeholder="Enter Your Name" required>
+                    <b><span class="formerror"></span></b>
                 </div>
-                <div class="input-box">
+                <div class="input-box" id="username">
                     <span class="details">Username</span>
-                    <input type="text" name = "userName" placeholder="Enter Your Username" required>
+                    <input type="text" name = "username" placeholder="Enter Your Username" required>
+                    <b><span class="formerror"></span></b>
                 </div>
-                <div class="input-box">
+                <div class="input-box" id="email">
                     <span class="details">Email</span>
                     <input type="text" name = "email" placeholder="Enter Your email" required>
+                    <b><span class="formerror"></span></b>
                 </div>
-                <div class="input-box">
+                <div class="input-box" id="phoneNumber">
                     <span class="details">Phone Number</span>
-                    <input type="text" name = "phoneNumber" placeholder="Enter Your number" required>
+                    <input type="number" name = "phoneNumber" placeholder="Enter Your number" required>
+                    <b><span class="formerror"></span></b>
                 </div>
-                <div class="input-box">
+                <div class="input-box" id="password">
                     <span class="details">Password</span>
                     <input type="password" name = "password" placeholder="Enter Your password" required>
+                    <b><span class="formerror"></span></b>
                 </div>
-                <div class="input-box">
+                <div class="input-box" id="cpass">
                     <span class="details">Confirm Password</span>
-                    <input type="password" name = "confirmPassword" nameplaceholder="confirm your password" required>
+                    <input type="password" name = "cpass" placeholder="Confirm your password" required>
+                    <b><span class="formerror"></span></b>
                 </div>
             </div>
             <div class="gender-details">
@@ -64,4 +70,58 @@
     </div>
 
 </body>
+<script>
+    function clearErrors(){
+        errors = document.getElementsByClassName('formerror');
+        for(let item of errors)
+        {
+            item.innerHTML = "";
+        }
+    }
+    function seterror(id,error){
+        element = document.getElementById(id);
+        element.getElementsByClassName('formerror')[0].innerHTML = error;
+    }
+    function validateForm(){
+        var returnval = true;
+        clearErrors();            
+        var name = document.forms['registrationForm']["name"].value;
+        if(name.length < 5){
+            seterror("name","Length of name is too short");
+            returnval = false;
+        }
+        var username = document.forms['registrationForm']["username"].value;
+        if(username.length < 5){
+            seterror("username","Length of usernamename sholud be more than 3 charcter");
+            returnval = false;
+        }
+        var email = document.forms['registrationForm']["email"].value;
+        const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if(!regex.test(email)){
+            seterror("email","not a vaild email id");
+            returnval = false;
+        }
+        var phoneNumber = document.forms['registrationForm']["phoneNumber"].value;
+        if(phoneNumber.length != 10){
+            seterror("phoneNumber","Length of mobile number should be 10");
+            returnval = false;
+        }
+        var password = document.forms['registrationForm']["password"].value;
+        if(password.length <4){
+            seterror("password","*Password sholud be at least 4 character");
+            returnval = false;
+        }
+        var cpassword = document.forms['registrationForm']["cpass"].value;
+        var res = password.localeCompare(cpassword);
+        console.log(res);
+        if(res == -1){
+            seterror("cpass","*Password does not match");
+            returnval = false;
+        }
+
+        return returnval;
+    }
+
+
+</script>
 </html>

@@ -7,16 +7,15 @@ const bcrypt = require("bcryptjs");
  * Controller for signup/registration
  */
 exports.signup = async (req, res) => {
-    
     try{
-        if(req.body.password != req.body.confirmPassword){
-          return res.status(400).send({
-            message : "Invalid Password"
-          });
-        };
+        // if(req.body.password != req.body.confirmPassword){
+        //   return res.status(400).send({
+        //     message : "Invalid Password"
+        //   });
+        // };
 
         // Checking if the userName already exist 
-        const checkUser = await User.findOne({userName : req.body.userName})
+        const checkUser = await User.findOne({userName : req.body.username})
         if(checkUser != null){
           return res.json("userName already exist");
         }
@@ -25,7 +24,7 @@ exports.signup = async (req, res) => {
         //creating obj to store user information
         const userObj = {
           name : req.body.name,
-          userName : req.body.userName,
+          userName : req.body.username,
           email : req.body.email,
           phoneNumber : req.body.phoneNumber,
           password :  bcrypt.hashSync(req.body.password, 8),
@@ -34,7 +33,7 @@ exports.signup = async (req, res) => {
       
         //Creating a user 
         const user = await User.create(userObj);
-        
+        console.log("user  created");
         //after logging as student the user will be redirected to the dashboard
         res.redirect('/home.html');
       }catch(error){
@@ -51,12 +50,11 @@ exports.signup = async (req, res) => {
  * Controller for signin
  */
 exports.signin = async (req, res) =>{
-
   const user =  await User.findOne({email : req.body.email});
   
   //checking if the user exist
   if(user == null){
-    console.log("inside if");
+    // console.log("inside if");
       return res.status(400).send({
           message : "Failed ! User id doesn't exist"
       })

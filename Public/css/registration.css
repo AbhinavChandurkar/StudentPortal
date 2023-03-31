@@ -132,3 +132,9 @@ form .button input:hover{
         width: 0;
     }
 }
+
+.formerror {
+    color: red;
+    font-size: medium;
+    font-family: 'Poppins',sans-serif;
+}

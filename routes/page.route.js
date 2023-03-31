@@ -17,7 +17,7 @@ module.exports = (app)=>{
     app.get('/admin',(req, res) => {
       res.sendFile(path.join(__dirname, '../Public', 'admin.html'));
     });
-  
+
     //Dashboard http://localhost:3000/Dashboard.html
     app.get('/dashboard',[authJwt.verifyToken],(req, res) => {
       res.sendFile(path.join(__dirname, '../Public', 'Dashboard.html'));
@@ -50,7 +50,7 @@ module.exports = (app)=>{
       res.sendFile(path.join(__dirname, '../Public', 'home.html'));
     });
 
-    app.get('/admin/dashboard', (req, res) => {
-      res.sendFile(path.join(__dirname, '../view', 'index.ejs'));
-    });
+    // app.get('/admin/dashboard', (req, res) => {
+    //   res.sendFile(path.join(__dirname, '../view', 'index.ejs'));
+    // });
 }
