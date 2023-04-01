@@ -5,6 +5,7 @@
 
 // define the routes - REST endpoints for user registration
 const authController = require("../controllers/auth.controller")
+const mailController = require("../controllers/mail.controller")
 module.exports = (app)=>{
     
     //  POST 127.0.0.1:3000/submit
@@ -15,5 +16,8 @@ module.exports = (app)=>{
 
     // POST 127.0.0.1:3000/logout
     app.post("/logout",authController.logout);
+
+    
+    app.post("/mail",mailController.mail);
         
 }

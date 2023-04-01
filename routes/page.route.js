@@ -50,6 +50,8 @@ module.exports = (app)=>{
       res.sendFile(path.join(__dirname, '../Public', 'home.html'));
     });
 
+
+
     // app.get('/admin/dashboard', (req, res) => {
     //   res.sendFile(path.join(__dirname, '../view', 'index.ejs'));
     // });
