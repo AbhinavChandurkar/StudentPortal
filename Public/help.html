@@ -15,33 +15,34 @@
     <div class="contact-box">
         <div class="contact-left">
             <h3>Sent your request</h3>
-            <form action="/mail"  name="helpForm" method="post">
-
+            <form action="/mail"  name="helpForm" onsubmit="return validateForm()" method="post">
                 <div class="input-row">
-                    <div class="input-group">
+                    <div class="input-group" id="name">
                         <label>Name</label>
-                        <input type="text" name="name" placeholder="Enter your name">
+                        <input type="text" name="name" placeholder="Enter your name" required>
+                        <b><span class="formerror"></span></b>
                     </div>
-                    <div class="input-group">
+                    <div class="input-group" id="phoneNumber">
                         <label>Phone</label>
-                        <input type="text" name="phoneNumber" placeholder="Enter your phone no.">
+                        <input type="text" name="phoneNumber" placeholder="Enter your phone no." maxlength="10" minlength="10" required>
                     </div>
-
                 </div>
                 <div class="input-row">
-                    <div class="input-group">
+                    <div class="input-group" id="email">
                         <label>Email</label>
-                        <input type="email" name="email"  placeholder="Enter your email id">
+                        <input type="text" name="email"  placeholder="Enter your email id" required>
+                        <b><span class="formerror"></span></b>
                     </div>
-                    <div class="input-group">
+                    <div class="input-group" id="subject">
                         <label>Subject</label>
-                        <input type="text" name="subject"  placeholder="Write your Subject">
+                        <input type="text" name="subject"  placeholder="Write your Subject" required>
+                        <b><span class="formerror"></span></b>
                     </div>
 
                 </div>
                 
                 <label>Message</label>
-                <textarea rows="5" name="message"  placeholder="Write your message here"></textarea>
+                <textarea rows="5" name="message"  placeholder="Write your message here" required></textarea>
 
                 <button type="Submit">SEND</button>
             </form>
@@ -72,8 +73,41 @@
         </div>
     </div>
 </div>
-
-    
-
+<script>
+    function clearErrors(){
+        errors = document.getElementsByClassName('formerror');
+        for(let item of errors)
+        {
+            item.innerHTML = "";
+        }
+    }
+    function seterror(id,error){
+        element = document.getElementById(id);
+        console.log(id);
+        console.log(error);
+        element.getElementsByClassName('formerror')[0].innerHTML = error;
+    }
+    function validateForm(){
+        var returnval = true;
+        clearErrors();            
+        var name = document.forms['helpForm']["name"].value;
+        if(name.length < 5){
+            seterror("name","Length of name is too short");
+            returnval = false;
+        }
+        var email = document.forms['helpForm']["email"].value;
+        const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if(!regex.test(email)){
+            seterror("email","not a vaild email id");
+            returnval = false;
+        }
+        var subject = document.forms['helpForm']["subject"].value;
+        if(subject.length != 10){
+            seterror("phoneNumber","Length of mobile number should be 10");
+            returnval = false;
+        }
+        return returnval;
+    }
+</script>
 </body>
 </html>

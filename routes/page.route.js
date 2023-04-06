@@ -41,6 +41,12 @@ module.exports = (app)=>{
       res.sendFile(path.join(__dirname, '../Public', 'seminar.html'));
     });
 
+    //help page route 
+    app.get('/help',[authJwt.verifyToken], (req, res) => {
+      res.sendFile(path.join(__dirname, '../Public', 'help.html'));
+    });
+
+
     //Events Page http://localhost:3000/events
     app.post('/eventsPayment',upload.single('image'), (req, res) => {
       res.sendFile(path.join(__dirname, '../Public', 'events.html'));
