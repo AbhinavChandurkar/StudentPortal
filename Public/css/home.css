@@ -18,12 +18,6 @@
     margin: auto;
 }
 
-.icon{
-    width: 200px;
-    float: left;
-    height: 70px;
-}
-
 .logo{
     color: #ff7200;
     font-size: 35px;
@@ -248,9 +242,15 @@ ul li a:hover{
     text-align: center;
 }
 
-.icons a{
+.icon{
+    text-align: center;
+}
+
+.icon a{
+    display: inline;
     text-decoration: none;
     color: #fff;
+    margin: 0 10px;
 }
 
 .icons .ion-icon{
@@ -267,6 +267,13 @@ ul li a:hover{
 
 }
 
+#error-message{
+    color: red;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    font-size: larger;
+}
 
 
 

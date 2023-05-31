@@ -1,7 +1,7 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 
-
+//error-message
 
 /**
  * Controller for signup/registration
@@ -50,42 +50,58 @@ exports.signup = async (req, res) => {
  * Controller for signin
  */
 exports.signin = async (req, res) =>{
-  const user =  await User.findOne({email : req.body.email});
-  
-  //checking if the user exist
-  if(user == null){
-    // console.log("inside if");
-      return res.status(400).send({
-          message : "Failed ! User id doesn't exist"
-      })
-  }
-  
+  const user = await User.findOne({ email: req.body.email });
 
-  //User is existing, so now we will do the password matching
-  var passwordIsValid = bcrypt.compareSync(
-    req.body.password,
-    user.password
-  );
+  // Checking if the user exists
+  if (user == null) {
+    return res.status(400).send("Failed! User ID doesn't exist");
+  }
+
+  // User exists, so now we will do the password matching
+  var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
 
   if (!passwordIsValid) {
-    return res.status(401).send({
-      message: "Invalid Password!"
-    });
+    return res.status(401).send("Invalid Password!");
   }
-  
-  // const token = jwt.sign({user}, config.secret, {
-  //   expiresIn: 60 // 5 minutes
-  // });
-  // res.cookie("token",token,{
-  //   httpOnly : true
-  // });
-  res.cookie("userName",user.userName,{
-    httpOnly : true,
-    maxAge : 600000000
-  });
 
-//Sending user to dashboard
-res.redirect('/Dashboard');
+  res.send("success");
+
+  //   const user =  await User.findOne({email : req.body.email});
+  
+//   //checking if the user exist
+//   if (user == null) {
+//     document.getElementById('error-message').textContent = 'Invalid credentials';
+//     return res.status(400).send({
+//       message: "Failed! User id doesn't exist",
+//     });
+//   }
+  
+
+//   //User is existing, so now we will do the password matching
+//   var passwordIsValid = bcrypt.compareSync(
+//     req.body.password,
+//     user.password
+//   );
+
+//   if (!passwordIsValid) {
+//     return res.status(401).send({
+//       message: "Invalid Password!"
+//     });
+//   }
+  
+//   // const token = jwt.sign({user}, config.secret, {
+//   //   expiresIn: 60 // 5 minutes
+//   // });
+//   // res.cookie("token",token,{
+//   //   httpOnly : true
+//   // });
+//   res.cookie("userName",user.userName,{
+//     httpOnly : true,
+//     maxAge : 600000000
+//   });
+
+// //Sending user to dashboard
+// res.redirect('/Dashboard');
   
 };
 

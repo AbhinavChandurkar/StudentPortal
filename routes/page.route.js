@@ -1,6 +1,6 @@
 /**
  * This file will act as the route for all the html pages
- * 
+ * !work on authjwt  
  */
 
 // define the routes - REST endpoints for user ui
@@ -19,7 +19,7 @@ module.exports = (app)=>{
     });
 
     //Dashboard http://localhost:3000/Dashboard.html
-    app.get('/dashboard',[authJwt.verifyToken],(req, res) => {
+    app.get('/dashboard',(req, res) => {
       res.sendFile(path.join(__dirname, '../Public', 'Dashboard.html'));
     });
   
@@ -29,20 +29,20 @@ module.exports = (app)=>{
     });
   
     //Events Page http://localhost:3000/events
-    app.get('/events',[authJwt.verifyToken], (req, res) => {
+    app.get('/events', (req, res) => {
       res.sendFile(path.join(__dirname, '../Public', 'events.html'));
     });
 
-    app.get('/internship',[authJwt.verifyToken], (req, res) => {
+    app.get('/internship', (req, res) => {
       res.sendFile(path.join(__dirname, '../Public', 'internship.html'));
     });
 
-    app.get('/seminar',[authJwt.verifyToken], (req, res) => {
+    app.get('/seminar', (req, res) => {
       res.sendFile(path.join(__dirname, '../Public', 'seminar.html'));
     });
 
     //help page route 
-    app.get('/help',[authJwt.verifyToken], (req, res) => {
+    app.get('/help', (req, res) => {
       res.sendFile(path.join(__dirname, '../Public', 'help.html'));
     });
 
@@ -52,7 +52,7 @@ module.exports = (app)=>{
       res.sendFile(path.join(__dirname, '../Public', 'events.html'));
     });
 
-    app.get('/logout',[authJwt.verifyToken], (req, res) => {
+    app.get('/logout', (req, res) => {
       res.sendFile(path.join(__dirname, '../Public', 'home.html'));
     });
 

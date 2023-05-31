@@ -37,8 +37,8 @@
                     <form action = "/login" method = "post">
                         <input type="email" name="email" placeholder="Enter Email Here">
                         <input type="password" name="password" placeholder="Enter Password Here">
-                        <button class="btnn"><a href="/Dashboard">Login</a></button>
-
+                        <button class="btnn" onclick="login()">Login</button>
+                        <p id="error-message" ></p>
                         <p class="link">Don't have an account<br>
                         <a href="registration">Sign up </a> here</a></p>
                         <p class="liw">Log in with</p>
@@ -60,5 +60,6 @@
     </div>
     </div>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
